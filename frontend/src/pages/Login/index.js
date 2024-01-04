@@ -13,7 +13,7 @@ import Container from "@material-ui/core/Container";
 import { i18n } from "../../translate/i18n";
 
 import { AuthContext } from "../../context/Auth/AuthContext";
-import logo from "../../assets/logologin.png";
+//import logo from "../../assets/logologin.png";
 
 
 // const Copyright = () => {
@@ -33,8 +33,8 @@ const useStyles = makeStyles(theme => ({
 	root: {
 		width: "100vw",
 		height: "100vh",
-		background: "linear-gradient(to right, #8B0000, #800000, #700000, #600000, #500000)", 
-		backgroundRepeat: "no-repeat",
+		 background: "linear-gradient(to right, #191970 , #00008B , #0000FF)", //Cor de fundo
+		 backgroundRepeat: "no-repeat",
 		 backgroundSize: "100% 100%",
 		 backgroundPosition: "center",
 		display: "flex",

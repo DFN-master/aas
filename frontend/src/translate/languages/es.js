@@ -258,7 +258,6 @@ const messages = {
 					administration: "Administración",
 					users: "Usuarios",
 					settings: "Configuración",
-					supervisory: "Supervisión",
 				},
 				appBar: {
 					user: {

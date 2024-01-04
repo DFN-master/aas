@@ -267,10 +267,6 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: 80,
     borderRadius: 5
-  },
-  ticketNunber: {
-    color: "#808888",
-    padding: 8,
   }
 }));
 
@@ -529,22 +525,6 @@ const MessagesList = ({ ticket, ticketId, isGroup }) => {
     }
   };
 
-  const renderNumberTicket = (message, index) => {
-    if (index < messagesList.length && index > 0) {
-      let messageTicket = message.ticketId;
-      let previousMessageTicket = messagesList[index - 1].ticketId;
-
-      if (messageTicket !== previousMessageTicket) {
-        return (
-          <div key={`ticket-${message.id}`} className={classes.ticketNunber}>
-            #ticket: {messageTicket}
-            <hr />
-          </div>
-        );
-      }
-    }
-  };
-
   const renderMessageDivider = (message, index) => {
     if (index < messagesList.length && index > 0) {
       let messageUser = messagesList[index].fromMe;
@@ -667,7 +647,6 @@ const MessagesList = ({ ticket, ticketId, isGroup }) => {
             <React.Fragment key={message.id}>
               {renderDailyTimestamps(message, index)}
               {renderMessageDivider(message, index)}
-              {renderNumberTicket(message, index)}
               <div
                 className={classes.messageLeft}
                 title={message.queueId && message.queue?.name}

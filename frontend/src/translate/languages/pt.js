@@ -351,8 +351,7 @@ const messages = {
           financeiro: "Financeiro",
           logout: "Sair",
           management: "Gerência",
-          kanban: "Kanban",
-          supervisory: "Supervisão",
+          kanban: "Kanban"
         },
         appBar: {
           user: {

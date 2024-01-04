@@ -13,7 +13,7 @@ import Container from "@material-ui/core/Container";
 import { i18n } from "../../translate/i18n";
 
 import { AuthContext } from "../../context/Auth/AuthContext";
-//import logo from "../../assets/logologin.png";
+import logo from "../../assets/logologin.png";
 
 
 // const Copyright = () => {
@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
 	root: {
 		width: "100vw",
 		height: "100vh",
-		 background: "linear-gradient(to right, #191970 , #00008B , #0000FF)", //Cor de fundo
+		background: "linear-gradient(to right, #fff, #fff , #fff)", //Cor de fundo
 		 backgroundRepeat: "no-repeat",
 		 backgroundSize: "100% 100%",
 		 backgroundPosition: "center",
@@ -88,6 +88,9 @@ const Login = () => {
 		<Container component="main" maxWidth="xs">
 			<CssBaseline/>
 			<div className={classes.paper}>
+				<div>
+					{/*<img style={{ margin: "0 auto", width: "80%" }} src={logo} alt="Whats" />*/}
+				</div>
 				<Typography component="h1" variant="h5">
 					{i18n.t("login.title")}
 				</Typography>

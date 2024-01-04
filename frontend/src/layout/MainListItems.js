@@ -14,7 +14,6 @@ import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 import PeopleAltOutlinedIcon from "@material-ui/icons/PeopleAltOutlined";
 import ContactPhoneOutlinedIcon from "@material-ui/icons/ContactPhoneOutlined";
 import AccountTreeOutlinedIcon from "@material-ui/icons/AccountTreeOutlined";
-import AccountBoxTwoToneIcon from "@material-ui/icons/AccountBoxTwoTone";
 import FlashOnIcon from "@material-ui/icons/FlashOn";
 import CalendarToday from "@material-ui/icons/CalendarToday";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
@@ -240,7 +239,6 @@ const MainListItems = (props) => {
 
   return (
     <div onClick={drawerClose}>
-
       <Can
         role={user.profile}
         perform={"drawer-service-items:view"}
@@ -309,12 +307,16 @@ const MainListItems = (props) => {
               </ListItem>                
             </List>
           </Collapse>
-
-          <ListItemLink
-            to="/todolist"
-            primary={i18n.t("Tarefas")}
-            icon={<BorderColorIcon />}
-          />
+          {/* <ListItemLink
+            to="/kanban"
+            primary="Kanban"
+            icon={<LoyaltyRoundedIcon />}
+          /> */}
+      <ListItemLink
+        to="/todolist"
+        primary={i18n.t("Tarefas")}
+        icon={<BorderColorIcon />}
+      />
             <ListItemLink
               to="/quick-messages"
               primary={i18n.t("mainDrawer.listItems.quickMessages")}
@@ -381,54 +383,6 @@ const MainListItems = (props) => {
         </>
         )}
       />
-
-<Can
-        role={user.profile}
-        perform="drawer-superv-items:view"
-        yes={()=>(
-          <>
-			<Divider />
-
-      <ListSubheader 
-          hidden={!drawerOpen}
-        style={{
-          position:"relative",
-          fontSize: "17px",
-          textAlign: "left",
-          paddingLeft: 20
-        }}   
-        inset
-        color="inherit">
-				{i18n.t("mainDrawer.listItems.supervisory")}
-			</ListSubheader>
-			<ListItemLink
-				to="/"
-				primary={i18n.t("mainDrawer.listItems.dashboard")}
-				icon={<DashboardOutlinedIcon />}
-			/>
-			<ListItemLink
-				to="/connections"
-				primary={i18n.t("mainDrawer.listItems.connections")}
-				icon={
-					<Badge badgeContent={connectionWarning ? "!" : 0} color="error">
-						<SyncAltIcon />
-					</Badge>
-				}
-			/>
-			<ListItemLink
-				to="/users"
-				primary={i18n.t("mainDrawer.listItems.users")}
-				icon={<PeopleAltOutlinedIcon />}
-			/>
-			<ListItemLink
-				to="/queues"
-				primary={i18n.t("mainDrawer.listItems.queues")}
-				icon={<AccountTreeOutlinedIcon />}
-			/>
-        </>
-        )}
-      />
-      
       <Can
         role={user.profile}
         perform="drawer-admin-items:view"

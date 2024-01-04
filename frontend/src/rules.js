@@ -3,14 +3,6 @@ const rules = {
 		static: [],
 	},
 
-	superv: {
-		static: [
-			"drawer-superv-items:view",
-			"tickets-manager:showall",
-			"user-modal:editProfile",
-		],
-	},
-
 	admin: {
 		static: [
 			//"dashboard:view",

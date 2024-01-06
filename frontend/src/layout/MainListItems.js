@@ -239,6 +239,7 @@ const MainListItems = (props) => {
 
   return (
     <div onClick={drawerClose}>
+      
       <Can
         role={user.profile}
         perform={"drawer-service-items:view"}
@@ -356,6 +357,39 @@ const MainListItems = (props) => {
         )}
       />
 
+<Can
+  role={user.profile}
+  perform="drawer-superv-items:view"
+  yes={() => (
+    <>
+      <Divider />
+      <ListSubheader
+        hidden={!drawerOpen}
+        className={classes.ListSubheader}
+      >
+        {i18n.t("mainDrawer.listItems.supervisory")}
+      </ListSubheader>
+      <ListItemLink
+        to="/"
+        primary={i18n.t("mainDrawer.listItems.dashboard")}
+        icon={<DashboardOutlinedIcon style={{ color: blue[500] }} />}
+      />
+      <ListItemLink
+        to="/connections"
+        primary={i18n.t("mainDrawer.listItems.connections")}
+        icon={
+          <Badge badgeContent={connectionWarning ? "!" : 0} color="error">
+            <SyncAltIcon style={{ color: blue[500] }} />
+          </Badge>
+        }
+      />
+      {/* Adicione mais itens de supervisão conforme necessário */}
+    </>
+  )}
+/>
+
+      
+
       <Can
         role={user.profile}
         perform={"drawer-admin-items:view"}
@@ -383,6 +417,46 @@ const MainListItems = (props) => {
         </>
         )}
       />
+
+<Can
+	role={user.profile}
+	perform="drawer-superv-items:view"
+	yes={() => (
+		<>
+			<Divider />
+			<ListSubheader inset>
+				{< AccountBoxTwoToneIcon style={{ color: blue[500], fontSize: 30 }} />}
+				{i18n.t("mainDrawer.listItems.supervisory")}
+			</ListSubheader>
+			<ListItemLink
+				to="/"
+				primary={i18n.t("mainDrawer.listItems.dashboard")}
+				icon={<DashboardOutlinedIcon style={{ color: blue[500]}} />}
+			/>
+			<ListItemLink
+				to="/connections"
+				primary={i18n.t("mainDrawer.listItems.connections")}
+				icon={
+					<Badge badgeContent={connectionWarning ? "!" : 0} color="error">
+						<SyncAltIcon style={{ color: blue[500]}}/>
+					</Badge>
+				}
+			/>
+			<ListItemLink
+				to="/users"
+				primary={i18n.t("mainDrawer.listItems.users")}
+				icon={<PeopleAltOutlinedIcon style={{ color: blue[500]}} />}
+			/>
+			<ListItemLink
+				to="/queues"
+				primary={i18n.t("mainDrawer.listItems.queues")}
+				icon={<AccountTreeOutlinedIcon style={{ color: blue[500]}} />}
+			/>
+		</>
+	)}
+/>
+
+
       <Can
         role={user.profile}
         perform="drawer-admin-items:view"
@@ -507,6 +581,7 @@ const MainListItems = (props) => {
           </>
         )}
       />
+      
       <Divider />
       <li>
         <ListItem 

@@ -34,7 +34,7 @@ export const RefreshTokenService = async (
 
     if (user.tokenVersion !== tokenVersion) {
       res.clearCookie("jrt");
-      throw new AppError("ERR_SESSION_EXPIRED", 401);
+      throw new AppError("ERR_SESSION_EXPIRED pode ser aqui o erro", 401);
     }
 
     const newToken = createAccessToken(user);

@@ -13,8 +13,6 @@ import routes from "./routes";
 import { logger } from "./utils/logger";
 import { messageQueue, sendScheduledMessages } from "./queues";
 
-
-
 Sentry.init({ dsn: process.env.SENTRY_DSN });
 
 const app = express();
@@ -44,7 +42,7 @@ app.use(async (err: Error, req: Request, res: Response, _: NextFunction) => {
   }
 
   logger.error(err);
-  return res.status(500).json({ error: "Internal server error" });
+  return res.status(500).json({ error: "Erro interno do servidor." });
 });
 
 export default app;

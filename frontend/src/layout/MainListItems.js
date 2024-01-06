@@ -28,6 +28,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import PeopleIcon from "@material-ui/icons/People";
 import ListIcon from "@material-ui/icons/ListAlt";
 import LoyaltyRoundedIcon from '@material-ui/icons/LoyaltyRounded';
+import AccountTreeOutlinedIcon from '@material-ui/icons/AccountTreeOutlined';
 import AnnouncementIcon from "@material-ui/icons/Announcement";
 import ForumIcon from "@material-ui/icons/Forum";
 import LocalAtmIcon from '@material-ui/icons/LocalAtm';
@@ -372,14 +373,14 @@ const MainListItems = (props) => {
       <ListItemLink
         to="/"
         primary={i18n.t("mainDrawer.listItems.dashboard")}
-        icon={<DashboardOutlinedIcon style={{ color: blue[500] }} />}
+        icon={<DashboardOutlinedIcon />}
       />
       <ListItemLink
         to="/connections"
         primary={i18n.t("mainDrawer.listItems.connections")}
         icon={
           <Badge badgeContent={connectionWarning ? "!" : 0} color="error">
-            <SyncAltIcon style={{ color: blue[500] }} />
+            <SyncAltIcon />
           </Badge>
         }
       />
@@ -425,32 +426,32 @@ const MainListItems = (props) => {
 		<>
 			<Divider />
 			<ListSubheader inset>
-				{< AccountBoxTwoToneIcon style={{ color: blue[500], fontSize: 30 }} />}
+				{< AccountBoxTwoToneIcon />}
 				{i18n.t("mainDrawer.listItems.supervisory")}
 			</ListSubheader>
 			<ListItemLink
 				to="/"
 				primary={i18n.t("mainDrawer.listItems.dashboard")}
-				icon={<DashboardOutlinedIcon style={{ color: blue[500]}} />}
+				icon={<DashboardOutlinedIcon />}
 			/>
 			<ListItemLink
 				to="/connections"
 				primary={i18n.t("mainDrawer.listItems.connections")}
 				icon={
 					<Badge badgeContent={connectionWarning ? "!" : 0} color="error">
-						<SyncAltIcon style={{ color: blue[500]}}/>
+						<SyncAltIcon />
 					</Badge>
 				}
 			/>
 			<ListItemLink
 				to="/users"
 				primary={i18n.t("mainDrawer.listItems.users")}
-				icon={<PeopleAltOutlinedIcon style={{ color: blue[500]}} />}
+				icon={<PeopleAltOutlinedIcon />}
 			/>
 			<ListItemLink
 				to="/queues"
 				primary={i18n.t("mainDrawer.listItems.queues")}
-				icon={<AccountTreeOutlinedIcon style={{ color: blue[500]}} />}
+				icon={<AccountTreeOutlinedIcon />}
 			/>
 		</>
 	)}

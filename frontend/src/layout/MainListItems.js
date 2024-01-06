@@ -372,6 +372,7 @@ const MainListItems = (props) => {
               paddingLeft: 20
             }} 
             inset
+            color="inherit"
       >
         {i18n.t("mainDrawer.listItems.supervisory")}
       </ListSubheader>
@@ -430,14 +431,16 @@ const MainListItems = (props) => {
 	yes={() => (
 		<>
 			<Divider />
-			<ListSubheader            hidden={!drawerOpen}
+			<ListSubheader
+            hidden={!drawerOpen}
             style={{
               position:"relative",
               fontSize: "17px",
               textAlign: "left",
               paddingLeft: 20
             }} 
-            inset>
+            inset
+            color="inherit">
 				{i18n.t("mainDrawer.listItems.supervisory")}
 			</ListSubheader>
 			<ListItemLink

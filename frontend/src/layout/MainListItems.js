@@ -364,8 +364,14 @@ const MainListItems = (props) => {
     <>
       <Divider />
       <ListSubheader
-        hidden={!drawerOpen}
-        className={classes.ListSubheader}
+            hidden={!drawerOpen}
+            style={{
+              position:"relative",
+              fontSize: "17px",
+              textAlign: "left",
+              paddingLeft: 20
+            }} 
+            inset
       >
         {i18n.t("mainDrawer.listItems.supervisory")}
       </ListSubheader>
@@ -424,8 +430,14 @@ const MainListItems = (props) => {
 	yes={() => (
 		<>
 			<Divider />
-			<ListSubheader inset>
-				{< AccountBoxTwoToneIcon />}
+			<ListSubheader            hidden={!drawerOpen}
+            style={{
+              position:"relative",
+              fontSize: "17px",
+              textAlign: "left",
+              paddingLeft: 20
+            }} 
+            inset>
 				{i18n.t("mainDrawer.listItems.supervisory")}
 			</ListSubheader>
 			<ListItemLink

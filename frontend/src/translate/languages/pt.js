@@ -191,6 +191,10 @@ const messages = {
           cancel: "Cancelar",
           attach: "Anexar Arquivo",
         },
+        confirmationModal: {
+          deleteTitle: "Deletar",
+          deleteMessage: "Confirma a exclusão do arquivo?",
+        },
         serviceHours:{
           dayWeek:"Dia da semana",
           startTimeA:"Hora Inicial - Turno A",
@@ -204,6 +208,9 @@ const messages = {
           friday:"Sexta-feira",
           saturday:"Sábado",
           sunday:"Domingo",
+        },
+        toasts: {
+          deleted: "Ärquivo excluido!", 
         }
       },
       userModal: {

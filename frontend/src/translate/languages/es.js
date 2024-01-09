@@ -346,7 +346,7 @@ const messages = {
 			campaigns: "Campañas",
 			annoucements: "Anuncios",
 			chats: "Chat Interno",
-			financiero: "Financiero",
+			financeiro: "Financiero",
 			logout: "Salir",
 			management: "Gestión",
 			kanban: "Kanban",

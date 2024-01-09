@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 const MessagesAPI = () => {
   const classes = useStyles();
 
-  const [formMessageTextData,] = useState({ token: '',number: '', body: '' })
+  const [formMessageTextData,] = useState({ token: '', number: '', body: '' })
   const [formMessageMediaData,] = useState({ token: '', number: '', medias: '' })
   const [file, setFile] = useState({})
 
@@ -55,7 +55,7 @@ const MessagesAPI = () => {
     };
     
     axios.request(options).then(function (response) {
-      toast.success('Mensagem enviada com sucesso');
+      toast.success('Mensaje enviado con éxito');
     }).catch(function (error) {
       toastError(error);
     });    
@@ -79,7 +79,7 @@ const MessagesAPI = () => {
       };
       
       axios.request(options).then(function (response) {
-        toast.success('Mensagem enviada com sucesso');
+        toast.success('Mensaje enviado con éxito');
       }).catch(function (error) {
         toastError(error);
       });      
@@ -146,18 +146,18 @@ const MessagesAPI = () => {
               </Grid>
               <Grid item xs={12} className={classes.textRight}>
                 <Button
-									type="submit"
-									color="primary"
-									variant="contained"
-									className={classes.btnWrapper}
-								>
-									{isSubmitting ? (
-										<CircularProgress
-											size={24}
-											className={classes.buttonProgress}
-										/>
-									) : 'Enviar'}
-								</Button>
+                  type="submit"
+                  color="primary"
+                  variant="contained"
+                  className={classes.btnWrapper}
+                >
+                  {isSubmitting ? (
+                    <CircularProgress
+                      size={24}
+                      className={classes.buttonProgress}
+                    />
+                  ) : 'Enviar'}
+                </Button>
               </Grid>
             </Grid>
           </Form>
@@ -172,8 +172,7 @@ const MessagesAPI = () => {
         initialValues={formMessageMediaData}
         enableReinitialize={true}
         onSubmit={(values, actions) => {
-          setTimeout(async () => {
-        
+          setTimeout(async () => {        
             await handleSendMediaMessage(values);
             actions.setSubmitting(false);
             actions.resetForm()
@@ -217,18 +216,18 @@ const MessagesAPI = () => {
               </Grid>
               <Grid item xs={12} className={classes.textRight}>
                 <Button
-									type="submit"
-									color="primary"
-									variant="contained"
-									className={classes.btnWrapper}
-								>
-									{isSubmitting ? (
-										<CircularProgress
-											size={24}
-											className={classes.buttonProgress}
-										/>
-									) : 'Enviar'}
-								</Button>
+                  type="submit"
+                  color="primary"
+                  variant="contained"
+                  className={classes.btnWrapper}
+                >
+                  {isSubmitting ? (
+                    <CircularProgress
+                      size={24}
+                      className={classes.buttonProgress}
+                    />
+                  ) : 'Enviar'}
+                </Button>
               </Grid>
             </Grid>
           </Form>
@@ -243,28 +242,28 @@ const MessagesAPI = () => {
       variant="outlined"
     >
       <Typography variant="h5">
-        Documentação para envio de mensagens
+        Documentación para el envío de mensajes
       </Typography>
       <Typography variant="h6" color="primary" className={classes.elementMargin}>
-        Métodos de Envio
+        Métodos de Envío
       </Typography>
       <Typography component="div">
         <ol>
-          <li>Mensagens de Texto</li>
-          <li>Mensagens de Media</li>
+          <li>Mensajes de Texto</li>
+          <li>Mensajes de Medios</li>
         </ol>
       </Typography>
       <Typography variant="h6" color="primary" className={classes.elementMargin}>
-        Instruções
+        Instrucciones
       </Typography>
       <Typography className={classes.elementMargin} component="div">
-        <b>Observações importantes</b><br />
+        <b>Observaciones importantes</b><br />
         <ul>
-          <li>Antes de enviar mensagens, é necessário o cadastro do token vinculado à conexão que enviará as mensagens. <br/>Para realizar o cadastro acesse o menu "Conexões", clique no botão editar da conexão e insira o token no devido campo.</li>
+          <li>Antes de enviar mensajes, es necesario registrar el token vinculado a la conexión que enviará los mensajes. <br/>Para realizar el registro, accede al menú "Conexiones", haz clic en el botón editar de la conexión e introduce el token en el campo correspondiente.</li>
           <li>
-            O número para envio não deve ter mascara ou caracteres especiais e deve ser composto por:
+            El número para el envío no debe tener máscara ni caracteres especiales y debe componerse de:
               <ul>
-                <li>Código do país</li>
+                <li>Código del país</li>
                 <li>DDD</li>
                 <li>Número</li>
               </ul>
@@ -272,49 +271,49 @@ const MessagesAPI = () => {
         </ul>
       </Typography>
       <Typography variant="h6" color="primary" className={classes.elementMargin}>
-        1. Mensagens de Texto
+        1. Mensajes de Texto
       </Typography>
       <Grid container>
         <Grid item xs={12} sm={6}>
           <Typography className={classes.elementMargin} component="div">
-            <p>Seguem abaixo a lista de informações necessárias para envio das mensagens de texto:</p>
+            <p>A continuación, se presenta la lista de información necesaria para el envío de mensajes de texto:</p>
             <b>Endpoint: </b> {getEndpoint()} <br />
             <b>Método: </b> POST <br />
-            <b>Headers: </b> X_TOKEN (token cadastrado) e Content-Type (application/json) <br />
-            <b>Body: </b> {"{ \"number\": \"558599999999\", \"body\": \"Sua mensagem\" }"}
+            <b>Headers: </b> X_TOKEN (token registrado) y Content-Type (application/json) <br />
+            <b>Body: </b> {"{ \"number\": \"558599999999\", \"body\": \"Tu mensaje\" }"}
           </Typography>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Typography className={classes.elementMargin}>
-            <b>Teste de Envio</b>
+            <b>Prueba de Envío</b>
           </Typography>
           {renderFormMessageText()}
         </Grid>
       </Grid>
       <Typography variant="h6" color="primary" className={classes.elementMargin}>
-        2. Mensagens de Media
+        2. Mensajes de Medios
       </Typography>
       <Grid container>
         <Grid item xs={12} sm={6}>
           <Typography className={classes.elementMargin} component="div">
-            <p>Seguem abaixo a lista de informações necessárias para envio das mensagens de texto:</p>
+            <p>A continuación, se presenta la lista de información necesaria para el envío de mensajes de medios:</p>
             <b>Endpoint: </b> {getEndpoint()} <br />
             <b>Método: </b> POST <br />
-            <b>Headers: </b> X_TOKEN (token cadastrado) e Content-Type (multipart/form-data) <br />
+            <b>Headers: </b> X_TOKEN (token registrado) y Content-Type (multipart/form-data) <br />
             <b>FormData: </b> <br />
             <ul>
               <li>
                 <b>number: </b> 558599999999
               </li>
               <li>
-                <b>medias: </b> arquivo
+                <b>medias: </b> archivo
               </li>
             </ul>
           </Typography>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Typography className={classes.elementMargin}>
-            <b>Teste de Envio</b>
+            <b>Prueba de Envío</b>
           </Typography>
           {renderFormMessageMedia()}
         </Grid>

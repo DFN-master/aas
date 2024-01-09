@@ -1,409 +1,415 @@
 const messages = {
-	en: {
+	es: {
 		translations: {
 			signup: {
-				title: "Sign up",
+				title: "Registro",
 				toasts: {
-					success: "User created successfully! Please login!",
-					fail: "Error creating user. Check the reported data.",
+					success:
+						"¡El usuario ha sido creado satisfactoriamente! ¡Ahora inicia sesión!",
+					fail: "Error creando el usuario. Verifica la data reportada.",
 				},
 				form: {
-					name: "Name",
-					email: "Email",
-					password: "Password",
+					name: "Nombre",
+					email: "Correo Electrónico",
+					password: "Contraseña",
 				},
 				buttons: {
-					submit: "Register",
-					login: "Already have an account? Log in!",
+					submit: "Regístrate",
+					login: "¿Ya tienes una cuenta? ¡Inicia sesión!",
 				},
 			},
 			login: {
-				title: "Login",
+				title: "Inicio de Sesión",
 				form: {
-					email: "Email",
-					password: "Password",
+					email: "Correo Electrónico",
+					password: "Contraseña",
 				},
 				buttons: {
-					submit: "Enter",
-					register: "Don't have an account? Register!",
+					submit: "Ingresa",
+					register: "¿No tienes cuenta? ¡Regístrate!",
 				},
 			},
 			auth: {
 				toasts: {
-					success: "Login successfully!",
+					success: "¡Inicio de sesión exitoso!",
 				},
 			},
 			dashboard: {
 				charts: {
 					perDay: {
-						title: "Tickets today: ",
+						title: "Tickets hoy: ",
 					},
 				},
 			},
 			connections: {
-				title: "Connections",
+				title: "Conexiones",
 				toasts: {
-					deleted: "WhatsApp connection deleted sucessfully!",
+					deleted:
+						"¡La conexión de WhatsApp ha sido borrada satisfactoriamente!",
 				},
 				confirmationModal: {
-					deleteTitle: "Delete",
-					deleteMessage: "Are you sure? It cannot be reverted.",
-					disconnectTitle: "Disconnect",
-					disconnectMessage: "Are you sure? You'll need to read QR Code again.",
+					deleteTitle: "Borrar",
+					deleteMessage: "¿Estás seguro? Este proceso no puede ser revertido.",
+					disconnectTitle: "Desconectar",
+					disconnectMessage: "Estás seguro? Deberá volver a leer el código QR",
 				},
 				buttons: {
-					add: "Add WhatsApp",
-					disconnect: "Disconnect",
-					tryAgain: "Try Again",
+					add: "Agrega WhatsApp",
+					disconnect: "Desconectar",
+					tryAgain: "Inténtalo de nuevo",
 					qrcode: "QR CODE",
-					newQr: "New QR CODE",
-					connecting: "Connectiing",
+					newQr: "Nuevo QR CODE",
+					connecting: "Conectando",
 				},
 				toolTips: {
 					disconnected: {
-						title: "Failed to start WhatsApp session",
+						title: "No se pudo iniciar la sesión de WhatsApp",
 						content:
-							"Make sure your cell phone is connected to the internet and try again, or request a new QR Code",
+							"Asegúrese de que su teléfono celular esté conectado a Internet y vuelva a intentarlo o solicite un nuevo código QR",
 					},
 					qrcode: {
-						title: "Waiting for QR Code read",
+						title: "Esperando la lectura del código QR",
 						content:
-							"Click on 'QR CODE' button and read the QR Code with your cell phone to start session",
+							"Haga clic en el botón 'CÓDIGO QR' y lea el Código QR con su teléfono celular para iniciar la sesión",
 					},
 					connected: {
-						title: "Connection established",
+						title: "Conexión establecida",
 					},
 					timeout: {
-						title: "Connection with cell phone has been lost",
+						title: "Se perdió la conexión con el teléfono celular",
 						content:
-							"Make sure your cell phone is connected to the internet and WhatsApp is open, or click on 'Disconnect' button to get a new QRcode",
+							"Asegúrese de que su teléfono celular esté conectado a Internet y que WhatsApp esté abierto, o haga clic en el botón 'Desconectar' para obtener un nuevo código QR",
 					},
 				},
 				table: {
-					name: "Name",
-					status: "Status",
-					lastUpdate: "Last Update",
-					default: "Default",
-					actions: "Actions",
-					session: "Session",
+					name: "Nombre",
+					status: "Estado",
+					lastUpdate: "Última Actualización",
+					default: "Por Defecto",
+					actions: "Acciones",
+					session: "Sesión",
 				},
 			},
 			whatsappModal: {
 				title: {
-					add: "Add WhatsApp",
-					edit: "Edit WhatsApp",
+					add: "Agrega WhatsApp",
+					edit: "Edita WhatsApp",
 				},
 				form: {
-					name: "Name",
-					default: "Default",
+					name: "Nombre",
+					default: "Por Defecto",
 				},
 				buttons: {
-					okAdd: "Add",
-					okEdit: "Save",
-					cancel: "Cancel",
+					okAdd: "Agregar",
+					okEdit: "Guardar",
+					cancel: "Cancelar",
 				},
-				success: "WhatsApp saved successfully.",
+				success: "WhatsApp guardado satisfactoriamente.",
 			},
 			qrCode: {
-				message: "Read QrCode to start the session",
+				message: "Lée el código QR para empezar la sesión.",
 			},
 			contacts: {
-				title: "Contacts",
+				title: "Contactos",
 				toasts: {
-					deleted: "Contact deleted sucessfully!",
+					deleted: "¡Contacto borrado satisfactoriamente!",
 				},
-				searchPlaceholder: "Search ...",
+				searchPlaceholder: "Buscar...",
 				confirmationModal: {
-					deleteTitle: "Delete",
-					importTitlte: "Import contacts",
+					deleteTitle: "Borrar",
+					importTitlte: "Importar contactos",
 					deleteMessage:
-						"Are you sure you want to delete this contact? All related tickets will be lost.",
-					importMessage: "Do you want to import all contacts from the phone?",
+						"¿Estás seguro que deseas borrar este contacto? Todos los tickets relacionados se perderán.",
+					importMessage:
+						"¿Quieres importar todos los contactos desde tu teléfono?",
 				},
 				buttons: {
-					import: "Import Contacts",
-					add: "Add Contact",
+					import: "Importar Contactos",
+					add: "Agregar Contacto",
 				},
 				table: {
-					name: "Name",
+					name: "Nombre",
 					whatsapp: "WhatsApp",
-					email: "Email",
-					actions: "Actions",
+					email: "Correo Electrónico",
+					actions: "Acciones",
 				},
 			},
 			contactModal: {
 				title: {
-					add: "Add contact",
-					edit: "Edit contact",
+					add: "Agregar contacto",
+					edit: "Editar contacto",
 				},
 				form: {
-					mainInfo: "Contact details",
-					extraInfo: "Additional information",
-					name: "Name",
-					number: "Whatsapp number",
-					email: "Email",
-					extraName: "Field name",
-					extraValue: "Value",
+					mainInfo: "Detalles del contacto",
+					extraInfo: "Información adicional",
+					name: "Nombre",
+					number: "Número de Whatsapp",
+					email: "Correo Electrónico",
+					extraName: "Nombre del Campo",
+					extraValue: "Valor",
 				},
 				buttons: {
-					addExtraInfo: "Add information",
-					okAdd: "Add",
-					okEdit: "Save",
-					cancel: "Cancel",
+					addExtraInfo: "Agregar información",
+					okAdd: "Agregar",
+					okEdit: "Guardar",
+					cancel: "Cancelar",
 				},
-				success: "Contact saved successfully.",
+				success: "Contacto guardado satisfactoriamente.",
 			},
 			queueModal: {
 				title: {
-					add: "Add queue",
-					edit: "Edit queue",
+					add: "Agregar cola",
+					edit: "Editar cola",
 				},
 				form: {
-					name: "Name",
+					name: "Nombre",
 					color: "Color",
-					greetingMessage: "Greeting Message",
+					greetingMessage: "Mensaje de saludo",
 				},
 				buttons: {
-					okAdd: "Add",
-					okEdit: "Save",
-					cancel: "Cancel",
+					okAdd: "Añadir",
+					okEdit: "Ahorrar",
+					cancel: "Cancelar",
 				},
 			},
 			userModal: {
 				title: {
-					add: "Add user",
-					edit: "Edit user",
+					add: "Agregar usuario",
+					edit: "Editar usuario",
 				},
 				form: {
-					name: "Name",
-					email: "Email",
-					password: "Password",
-					profile: "Profile",
+					name: "Nombre",
+					email: "Correo Electrónico",
+					password: "Contraseña",
+					profile: "Perfil",
 				},
 				buttons: {
-					okAdd: "Add",
-					okEdit: "Save",
-					cancel: "Cancel",
+					okAdd: "Agregar",
+					okEdit: "Guardar",
+					cancel: "Cancelar",
 				},
-				success: "User saved successfully.",
+				success: "Usuario guardado satisfactoriamente.",
 			},
 			chat: {
-				noTicketMessage: "Select a ticket to start chatting.",
+				noTicketMessage: "Selecciona un ticket para empezar a chatear.",
 			},
 			ticketsManager: {
 				buttons: {
-					newTicket: "New",
+					newTicket: "Nuevo",
 				},
 			},
 			ticketsQueueSelect: {
-				placeholder: "Queues",
+				placeholder: "Linhas",
 			},
 			tickets: {
 				toasts: {
-					deleted: "The ticket you were on has been deleted.",
+					deleted: "El ticket en el que estabas ha sido borrado.",
 				},
 				notification: {
-					message: "Message from",
+					message: "Mensaje de",
 				},
 				tabs: {
-					open: { title: "Inbox" },
-					closed: { title: "Resolved" },
-					search: { title: "Search" },
+					open: { title: "Bandeja" },
+					closed: { title: "Resueltos" },
+					search: { title: "Buscar" },
 				},
 				search: {
-					placeholder: "Search tickets and messages.",
+					placeholder: "Buscar tickets y mensajes.",
 				},
 				buttons: {
-					showAll: "All",
+					showAll: "Todos",
 				},
 			},
 			transferTicketModal: {
-				title: "Transfer Ticket",
-				fieldLabel: "Type to search for users",
-				noOptions: "No user found with this name",
+				title: "Transferir Ticket",
+				fieldLabel: "Escriba para buscar usuarios",
+				noOptions: "No se encontraron usuarios con ese nombre",
 				buttons: {
-					ok: "Transfer",
-					cancel: "Cancel",
+					ok: "Transferir",
+					cancel: "Cancelar",
 				},
 			},
 			ticketsList: {
-				pendingHeader: "Queue",
-				assignedHeader: "Working on",
-				noTicketsTitle: "Nothing here!",
-				noTicketsMessage: "No tickets found with this status or search term.",
+				pendingHeader: "Cola",
+				assignedHeader: "Trabajando en",
+				noTicketsTitle: "¡Nada acá!",
+				noTicketsMessage:
+					"No se encontraron tickets con este estado o término de búsqueda",
 				buttons: {
-					accept: "Accept",
+					accept: "Acceptar",
 				},
 			},
 			newTicketModal: {
-				title: "Create Ticket",
-				fieldLabel: "Type to search for a contact",
-				add: "Add",
+				title: "Crear Ticket",
+				fieldLabel: "Escribe para buscar un contacto",
+				add: "Añadir",
 				buttons: {
-					ok: "Save",
-					cancel: "Cancel",
+					ok: "Guardar",
+					cancel: "Cancelar",
 				},
 			},
 			mainDrawer: {
 				listItems: {
 					dashboard: "Dashboard",
-					connections: "Connections",
+					connections: "Conexiones",
 					tickets: "Tickets",
-					contacts: "Contacts",
-					queues: "Queues",
-					administration: "Administration",
-					users: "Users",
-					settings: "Settings",
+					contacts: "Contactos",
+					queues: "Linhas",
+					administration: "Administración",
+					users: "Usuarios",
+					settings: "Configuración",
 				},
 				appBar: {
 					user: {
-						profile: "Profile",
-						logout: "Logout",
+						profile: "Perfil",
+						logout: "Cerrar Sesión",
 					},
 				},
 			},
 			notifications: {
-				noTickets: "No notifications.",
+				noTickets: "Sin notificaciones.",
 			},
 			queues: {
-				title: "Queues",
+				title: "Linhas",
 				table: {
-					name: "Name",
+					name: "Nombre",
 					color: "Color",
-					greeting: "Greeting message",
-					actions: "Actions",
+					greeting: "Mensaje de saludo",
+					actions: "Comportamiento",
 				},
 				buttons: {
-					add: "Add queue",
+					add: "Agregar cola",
 				},
 				confirmationModal: {
-					deleteTitle: "Delete",
+					deleteTitle: "Eliminar",
 					deleteMessage:
-						"Are you sure? It cannot be reverted! Tickets in this queue will still exist, but will not have any queues assigned.",
+						"¿Estás seguro? ¡Esta acción no se puede revertir! Los tickets en esa cola seguirán existiendo, pero ya no tendrán ninguna cola asignada.",
 				},
 			},
 			queueSelect: {
-				inputLabel: "Queues",
+				inputLabel: "Linhas",
 			},
 			users: {
-				title: "Users",
+				title: "Usuarios",
 				table: {
-					name: "Name",
-					email: "Email",
-					profile: "Profile",
-					actions: "Actions",
+					name: "Nombre",
+					email: "Correo Electrónico",
+					profile: "Perfil",
+					actions: "Acciones",
 				},
 				buttons: {
-					add: "Add user",
+					add: "Agregar usuario",
 				},
 				toasts: {
-					deleted: "User deleted sucessfully.",
+					deleted: "Usuario borrado satisfactoriamente.",
 				},
 				confirmationModal: {
-					deleteTitle: "Delete",
+					deleteTitle: "Borrar",
 					deleteMessage:
-						"All user data will be lost. Users' open tickets will be moved to queue.",
+						"Toda la información del usuario se perderá. Los tickets abiertos de los usuarios se moverán a la cola.",
 				},
 			},
 			settings: {
-				success: "Settings saved successfully.",
-				title: "Settings",
+				success: "Configuración guardada satisfactoriamente.",
+				title: "Configuración",
 				settings: {
 					userCreation: {
-						name: "User creation",
+						name: "Creación de usuarios",
 						options: {
-							enabled: "Enabled",
-							disabled: "Disabled",
+							enabled: "Habilitado",
+							disabled: "Deshabilitado",
 						},
 					},
 				},
 			},
 			messagesList: {
 				header: {
-					assignedTo: "Assigned to:",
+					assignedTo: "Asignado a:",
 					buttons: {
-						return: "Return",
-						resolve: "Resolve",
-						reopen: "Reopen",
-						accept: "Accept",
+						return: "Devolver",
+						resolve: "Resolver",
+						reopen: "Reabrir",
+						accept: "Aceptar",
 					},
 				},
 			},
 			messagesInput: {
-				placeholderOpen: "Type a message",
-				placeholderClosed: "Reopen or accept this ticket to send a message.",
-				signMessage: "Sign",
+				placeholderOpen: "Escribe un mensaje",
+				placeholderClosed:
+					"Vuelva a abrir o acepte este ticket para enviar un mensaje.",
+				signMessage: "Firmar",
 			},
 			contactDrawer: {
-				header: "Contact details",
+				header: "Detalles del contacto",
 				buttons: {
-					edit: "Edit contact",
+					edit: "Editar contacto",
 				},
-				extraInfo: "Other information",
+				extraInfo: "Otra información",
 			},
 			ticketOptionsMenu: {
-				delete: "Delete",
-				transfer: "Transfer",
+				delete: "Borrar",
+				transfer: "Transferir",
 				confirmationModal: {
-					title: "Delete ticket #",
-					titleFrom: "from contact ",
-					message: "Attention! All ticket's related messages will be lost.",
+					title: "¿Borrar ticket #",
+					titleFrom: "del contacto ",
+					message:
+						"¡Atención! Todos los mensajes Todos los mensajes relacionados con el ticket se perderán.",
 				},
 				buttons: {
-					delete: "Delete",
-					cancel: "Cancel",
+					delete: "Borrar",
+					cancel: "Cancelar",
 				},
 			},
 			confirmationModal: {
 				buttons: {
 					confirm: "Ok",
-					cancel: "Cancel",
+					cancel: "Cancelar",
 				},
 			},
 			messageOptionsMenu: {
-				delete: "Delete",
-				reply: "Reply",
+				delete: "Borrar",
+				reply: "Responder",
 				confirmationModal: {
-					title: "Delete message?",
-					message: "This action cannot be reverted.",
+					title: "¿Borrar mensaje?",
+					message: "Esta acción no puede ser revertida.",
 				},
 			},
 			backendErrors: {
 				ERR_NO_OTHER_WHATSAPP:
-					"There must be at lest one default WhatsApp connection.",
+					"Debe haber al menos una conexión de WhatsApp predeterminada.",
 				ERR_NO_DEF_WAPP_FOUND:
-					"No default WhatsApp found. Check connections page.",
+					"No se encontró WhatsApp predeterminado. Verifique la página de conexiones.",
 				ERR_WAPP_NOT_INITIALIZED:
-					"This WhatsApp session is not initialized. Check connections page.",
+					"Esta sesión de WhatsApp no ​​está inicializada. Verifique la página de conexiones.",
 				ERR_WAPP_CHECK_CONTACT:
-					"Could not check WhatsApp contact. Check connections page.",
-				ERR_WAPP_INVALID_CONTACT: "This is not a valid whatsapp number.",
+					"No se pudo verificar el contacto de WhatsApp. Verifique la página de conexiones.",
+				ERR_WAPP_INVALID_CONTACT: "Este no es un número de whatsapp válido.",
 				ERR_WAPP_DOWNLOAD_MEDIA:
-					"Could not download media from WhatsApp. Check connections page.",
-				ERR_INVALID_CREDENTIALS: "Authentication error. Please try again.",
+					"No se pudieron descargar los medios de WhatsApp. Verifique la página de conexiones.",
+				ERR_INVALID_CREDENTIALS: "Error de autenticación. Vuelva a intentarlo.",
 				ERR_SENDING_WAPP_MSG:
-					"Error sending WhatsApp message. Check connections page.",
-				ERR_DELETE_WAPP_MSG: "Couldn't delete message from WhatsApp.",
-				ERR_OTHER_OPEN_TICKET:
-					"There's already an open ticket for this contact.",
-				ERR_SESSION_EXPIRED: "Session expired. Please login.",
+					"Error al enviar el mensaje de WhatsApp. Verifique la página de conexiones.",
+				ERR_DELETE_WAPP_MSG: "No se pudo borrar el mensaje de WhatsApp.",
+				ERR_OTHER_OPEN_TICKET: "Ya hay un ticket abierto para este contacto.",
+				ERR_SESSION_EXPIRED: "Sesión caducada. Inicie sesión.",
 				ERR_USER_CREATION_DISABLED:
-					"User creation was disabled by administrator.",
-				ERR_NO_PERMISSION: "You don't have permission to access this resource.",
-				ERR_DUPLICATED_CONTACT: "A contact with this number already exists.",
-				ERR_NO_SETTING_FOUND: "No setting found with this ID.",
-				ERR_NO_CONTACT_FOUND: "No contact found with this ID.",
-				ERR_NO_TICKET_FOUND: "No ticket found with this ID.",
-				ERR_NO_USER_FOUND: "No user found with this ID.",
-				ERR_NO_WAPP_FOUND: "No WhatsApp found with this ID.",
-				ERR_CREATING_MESSAGE: "Error while creating message on database.",
-				ERR_CREATING_TICKET: "Error while creating ticket on database.",
+					"La creación de usuarios fue deshabilitada por el administrador.",
+				ERR_NO_PERMISSION: "No tienes permiso para acceder a este recurso.",
+				ERR_DUPLICATED_CONTACT: "Ya existe un contacto con este número.",
+				ERR_NO_SETTING_FOUND:
+					"No se encontró ninguna configuración con este ID.",
+				ERR_NO_CONTACT_FOUND: "No se encontró ningún contacto con este ID.",
+				ERR_NO_TICKET_FOUND: "No se encontró ningún ticket con este ID.",
+				ERR_NO_USER_FOUND: "No se encontró ningún usuario con este ID.",
+				ERR_NO_WAPP_FOUND: "No se encontró WhatsApp con este ID.",
+				ERR_CREATING_MESSAGE: "Error al crear el mensaje en la base de datos.",
+				ERR_CREATING_TICKET: "Error al crear el ticket en la base de datos.",
 				ERR_FETCH_WAPP_MSG:
-					"Error fetching the message in WhtasApp, maybe it is too old.",
+					"Error al obtener el mensaje en WhtasApp, tal vez sea demasiado antiguo.",
 				ERR_QUEUE_COLOR_ALREADY_EXISTS:
-					"This color is already in use, pick another one.",
+					"Este color ya está en uso, elija otro.",
 				ERR_WAPP_GREETING_REQUIRED:
-					"Greeting message is required if there is more than one queue.",
+					"El mensaje de saludo es obligatorio cuando hay más de una cola.",
 			},
 		},
 	},

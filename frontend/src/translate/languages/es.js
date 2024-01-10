@@ -295,6 +295,7 @@ const messages = {
 		  },
 		  buttons: {
 			showAll: "Todos",
+			close: "Cerrar",
 		  },
 		},
 		transferTicketModal: {

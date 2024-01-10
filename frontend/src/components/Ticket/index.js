@@ -18,6 +18,7 @@ import toastError from "../../errors/toastError";
 import { AuthContext } from "../../context/Auth/AuthContext";
 import { TagsContainer } from "../TagsContainer";
 import { socketConnection } from "../../services/socket";
+import { i18n } from "../../translate/i18n";
 
 const drawerWidth = 320;
 
@@ -80,6 +81,9 @@ const Ticket = () => {
           const queueAllowed = queues.find((q) => q.id === queueId);
           if (queueAllowed === undefined && profile !== "admin") {
             toast.error("Acesso não permitido");
+
+            {}
+
             history.push("/tickets");
             return;
           }

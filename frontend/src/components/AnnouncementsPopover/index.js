@@ -23,6 +23,7 @@ import {
 import api from "../../services/api";
 import { isArray } from "lodash";
 import moment from "moment";
+import { i18n } from "../../translate/i18n";
 import { socketConnection } from "../../services/socket";
 
 const useStyles = makeStyles((theme) => ({
@@ -312,7 +313,7 @@ export default function AnnouncementsPopover() {
                 </ListItem>
               ))}
             {isArray(announcements) && announcements.length === 0 && (
-              <ListItemText primary="Nenhum registro" />
+              <ListItemText primary="{i18n.t('annoucements.popover.notFound')}" />
             )}
           </List>
         </Paper>

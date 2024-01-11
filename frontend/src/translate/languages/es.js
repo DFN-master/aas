@@ -296,6 +296,7 @@ const messages = {
 		  buttons: {
 			showAll: "Todos",
 			close: "Cerrar",
+			closed: "Cerrado",
 		  },
 		},
 		transferTicketModal: {
@@ -611,6 +612,9 @@ const messages = {
 			  deleteMessage:
 				"¿Estás seguro? ¡Esta acción no se puede revertir! Las atenciones de esta cola seguirán existiendo, pero ya no tendrán ninguna cola asignada.",
 			},
+			popover: {
+				notFound: "No hay registro",
+			}
 		  },
 		  queueSelect: {
 			inputLabel: "Colas",

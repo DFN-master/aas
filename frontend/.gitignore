@@ -4,3 +4,5 @@
 /.env
 /package-lock.json
 /build
+/backend/.env
+/frontend/.env

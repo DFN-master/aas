@@ -407,7 +407,7 @@ const getSenderMessage = (
 };
 
 const getContactMessage = async (msg: proto.IWebMessageInfo, wbot: Session) => {
-  
+
   const isGroup = msg.key.remoteJid.includes("g.us");
   const rawNumber = msg.key.remoteJid.replace(/\D/g, "");
   return isGroup
@@ -904,7 +904,7 @@ const verifyQueue = async (
     /* Tratamento para envio de mensagem quando a fila está fora do expediente */
     if (choosenQueue.options.length === 0) {
       const queue = await Queue.findByPk(choosenQueue.id);
-      
+
       let currentSchedule;
 
       const settings = await Setting.findOne({
@@ -953,11 +953,11 @@ const verifyQueue = async (
 
       if (choosenQueue.mediaPath !== null && choosenQueue.mediaPath !== "") {
         const filePath = path.resolve("public", choosenQueue.mediaPath);
-  
+
         const optionsMsg = await getMessageOptions(choosenQueue.mediaName, filePath, false);
-  
+
         let sentMessage = await wbot.sendMessage(`${ticket.contact.number}@${ticket.isGroup ? "g.us" : "s.whatsapp.net"}`, { ...optionsMsg });
-  
+
         await verifyMediaMessage(sentMessage, ticket, contact);
       }
     }
@@ -1125,14 +1125,14 @@ const handleChartbot = async (ticket: Ticket, msg: WAMessage, wbot: Session, don
     if (option) {
       await ticket.update({ queueOptionId: option?.id });
       // if (option.mediaPath !== null && option.mediaPath !== "")  {
-  
+
       //   const filePath = path.resolve("public", option.mediaPath);
-  
-  
+
+
       //   const optionsMsg = await getMessageOptions(option.mediaName, filePath);
-  
+
       //   let sentMessage = await wbot.sendMessage(`${ticket.contact.number}@${ticket.isGroup ? "g.us" : "s.whatsapp.net"}`, { ...optionsMsg });
-  
+
       //   await verifyMediaMessage(sentMessage, ticket, ticket.contact);
       // }
     }
@@ -1370,14 +1370,14 @@ const handleChartbot = async (ticket: Ticket, msg: WAMessage, wbot: Session, don
         await verifyMessage(sendMsg, ticket, ticket.contact);
 
         if (currentOption.mediaPath !== null && currentOption.mediaPath !== "")  {
-    
+
           const filePath = path.resolve("public", currentOption.mediaPath);
-    
-    
+
+
           const optionsMsg = await getMessageOptions(currentOption.mediaName, filePath, false);
-    
+
           let sentMessage = await wbot.sendMessage(`${ticket.contact.number}@${ticket.isGroup ? "g.us" : "s.whatsapp.net"}`, { ...optionsMsg });
-    
+
           await verifyMediaMessage(sentMessage, ticket, ticket.contact);
         }
       };
@@ -1493,6 +1493,18 @@ const handleMessage = async (
 
     // voltar para o menu inicial
 
+    if (bodyMessage.toUpperCase() === "PARAR") {
+      console.log("Usuário solicitou parar. Interrompendo processamento.");
+      await ticket.update({
+        queueOptionId: null,
+        chatbot: false,
+        queueId: null,
+        sessiontypebot: null,
+        startChatTime: null
+      });
+      return;
+    }
+
     if (bodyMessage == "00") {
       await ticket.update({
         queueOptionId: null,
@@ -1504,7 +1516,6 @@ const handleMessage = async (
       await verifyQueue(wbot, msg, ticket, ticket.contact);
       return;
     }
-
 
     const ticketTraking = await FindOrCreateATicketTrakingService({
       ticketId: ticket.id,
@@ -1937,7 +1948,7 @@ const wbotMessageListener = async (wbot: Session, companyId: number): Promise<vo
     });
 
     wbot.ev.on("messages.update", (messageUpdate: WAMessageUpdate[]) => {
-   
+
       if (messageUpdate.length === 0) return;
       messageUpdate.forEach(async (message: WAMessageUpdate) => {
         (wbot as WASocket)!.readMessages([message.key])

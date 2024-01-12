@@ -275,7 +275,6 @@ export function makeid(length) {
   return result;
 }
 
-
 const getBodyButton = (msg: proto.IWebMessageInfo): string => {
   if (msg.key.fromMe && msg?.message?.viewOnceMessage?.message?.buttonsMessage?.contentText) {
     let bodyMessage = `*${msg?.message?.viewOnceMessage?.message?.buttonsMessage?.contentText}*`;
@@ -293,7 +292,6 @@ const getBodyButton = (msg: proto.IWebMessageInfo): string => {
         bodyMessage += `\n\n${rows.title}`;
       }
     }
-
     return bodyMessage;
   }
 };
@@ -301,7 +299,6 @@ const getBodyButton = (msg: proto.IWebMessageInfo): string => {
 const msgLocation = (image, latitude, longitude) => {
   if (image) {
     var b64 = Buffer.from(image).toString("base64");
-
     let data = `data:image/png;base64, ${b64} | https://maps.google.com/maps?q=${latitude}%2C${longitude}&z=17&hl=pt-BR|${latitude}, ${longitude} `;
     return data;
   }
@@ -325,7 +322,6 @@ export const getBodyMessage = (msg: proto.IWebMessageInfo): string | null => {
       stickerMessage: "sticker",
       contactMessage: msg.message?.contactMessage?.vcard,
       contactsArrayMessage: "varios contatos",
-      //locationMessage: `Latitude: ${msg.message.locationMessage?.degreesLatitude} - Longitude: ${msg.message.locationMessage?.degreesLongitude}`,
       locationMessage: msgLocation(
         msg.message?.locationMessage?.jpegThumbnail,
         msg.message?.locationMessage?.degreesLatitude,
@@ -357,7 +353,6 @@ ${JSON.stringify(msg)}`);
   }
 };
 
-
 export const getQuotedMessage = (msg: proto.IWebMessageInfo): any => {
   const body =
     msg.message.imageMessage.contextInfo ||
@@ -374,20 +369,17 @@ export const getQuotedMessage = (msg: proto.IWebMessageInfo): any => {
     msg.message.listResponseMessage?.contextInfo;
   msg.message.senderKeyDistributionMessage;
 
-  // testar isso
-
   return extractMessageContent(body[Object.keys(body).values().next().value]);
 };
+
 export const getQuotedMessageId = (msg: proto.IWebMessageInfo) => {
   const body = extractMessageContent(msg.message)[
     Object.keys(msg?.message).values().next().value
   ];
-
   return body?.contextInfo?.stanzaId;
 };
 
 const getMeSocket = (wbot: Session): IMe => {
-
   return {
       id: jidNormalizedUser((wbot as WASocket).user.id),
       name: (wbot as WASocket).user.name
@@ -469,8 +461,6 @@ const downloadMedia = async (msg: proto.IWebMessageInfo) => {
       );
     }
   }
-
-
   let buffer = Buffer.from([]);
   // eslint-disable-next-line no-restricted-syntax
   try {
@@ -500,7 +490,6 @@ const downloadMedia = async (msg: proto.IWebMessageInfo) => {
   return media;
 };
 
-
 const verifyContact = async (
   msgContact: IMe,
   wbot: Session,
@@ -521,11 +510,7 @@ const verifyContact = async (
     isGroup: msgContact.id.includes("g.us"),
     companyId,
   };
-
-
-
   const contact = CreateOrUpdateContactService(contactData);
-
   return contact;
 };
 
@@ -626,7 +611,6 @@ export const verifyMediaMessage = async (
         ticketId: ticket.id,
       });
   }
-
   return newMessage;
 };
 
@@ -732,7 +716,6 @@ ${JSON.stringify(msg?.message)}`);
   }
 };
 
-
 const Push = (msg: proto.IWebMessageInfo) => {
   return msg.pushName;
 }
@@ -747,8 +730,6 @@ const verifyQueue = async (
     wbot.id!,
     ticket.companyId
   )
-
-
 
   if (queues.length === 1) {
     const firstQueue = head(queues);
@@ -772,10 +753,7 @@ const verifyQueue = async (
       console.log(firstQueue.mediaPath)
 
       const filePath = path.resolve("public", firstQueue.mediaPath);
-
-
       const optionsMsg = await getMessageOptions(firstQueue.mediaName, filePath, false);
-
       let sentMessage = await wbot.sendMessage(`${ticket.contact.number}@${ticket.isGroup ? "g.us" : "s.whatsapp.net"}`, { ...optionsMsg });
 
       await verifyMediaMessage(sentMessage, ticket, contact);
@@ -786,7 +764,6 @@ const verifyQueue = async (
       ticketId: ticket.id,
       companyId: ticket.companyId,
     });
-
     return;
   }
 
@@ -801,7 +778,6 @@ const verifyQueue = async (
       companyId
     }
   });
-
 
   const botList = async () => {
     const sectionsRows = [];
@@ -864,7 +840,6 @@ const verifyQueue = async (
       options += `*[ ${index + 1} ]* - ${queue.name}\n`;
     });
 
-
     const textMessage = {
       text: formatBody(`\u200e${greetingMessage}\n\n${options}`, contact),
     };
@@ -900,7 +875,6 @@ const verifyQueue = async (
       companyId: ticket.companyId,
     });
 
-
     /* Tratamento para envio de mensagem quando a fila está fora do expediente */
     if (choosenQueue.options.length === 0) {
       const queue = await Queue.findByPk(choosenQueue.id);
@@ -916,13 +890,7 @@ const verifyQueue = async (
       if (settings?.value === "queue") {
         currentSchedule = await VerifyCurrentSchedule(ticket.companyId, queue.id);
       }
-
-      if (
-        settings?.value === "queue" &&
-        !isNil(currentSchedule) &&
-        (!currentSchedule || currentSchedule.inActivity === false)
-      ) {
-
+      if (settings?.value === "queue" && !isNil(currentSchedule) && (!currentSchedule || currentSchedule.inActivity === false)) {
           let msgoutOfHoursMessage = `${queue.outOfHoursMessage}\n`
           if (queue.resetChatbotMsg) {
             msgoutOfHoursMessage += "\n*[ 00 ]* - Voltar ao Menu Principal"
@@ -950,39 +918,28 @@ const verifyQueue = async (
       }
       );
       await verifyMessage(sentMessage, ticket, contact);
-
       if (choosenQueue.mediaPath !== null && choosenQueue.mediaPath !== "") {
         const filePath = path.resolve("public", choosenQueue.mediaPath);
-
         const optionsMsg = await getMessageOptions(choosenQueue.mediaName, filePath, false);
-
         let sentMessage = await wbot.sendMessage(`${ticket.contact.number}@${ticket.isGroup ? "g.us" : "s.whatsapp.net"}`, { ...optionsMsg });
-
         await verifyMediaMessage(sentMessage, ticket, contact);
       }
     }
-
   } else {
     if (buttonActive.value === "list") {
       return botList();
     };
-
     if (buttonActive.value === "button" && queues.length <= 4) {
       return botButton();
     }
-
     if (buttonActive.value === "text") {
       return botText();
     }
-
     if (buttonActive.value === "button" && queues.length > 4) {
       return botText();
     }
-
   }
-
 };
-
 
 export const verifyRating = (ticketTraking: TicketTraking) => {
   if (
@@ -1064,9 +1021,6 @@ export const handleRating = async (
 };
 
 const handleChartbot = async (ticket: Ticket, msg: WAMessage, wbot: Session, dontReadTheFirstQuestion: boolean = false) => {
-
-
-
   const queue = await Queue.findByPk(ticket.queueId, {
     include: [
       {
@@ -1082,6 +1036,19 @@ const handleChartbot = async (ticket: Ticket, msg: WAMessage, wbot: Session, don
   });
 
   const messageBody = getBodyMessage(msg);
+
+  if(!msg.key.fromMe && messageBody.toUpperCase() === "PARAR") {
+    // usuario pediu para parar o bot
+    console.log("Usuário solicitou parar. Interrompendo processamento.");
+    await ticket.update({
+      queueOptionId: null,
+      chatbot: false,
+      queueId: null,
+      sessiontypebot: null,
+      startChatTime: null
+    });
+    return;
+  }
 
   if (messageBody == "00") {
     // voltar para o menu inicial
@@ -1124,20 +1091,7 @@ const handleChartbot = async (ticket: Ticket, msg: WAMessage, wbot: Session, don
     }
     if (option) {
       await ticket.update({ queueOptionId: option?.id });
-      // if (option.mediaPath !== null && option.mediaPath !== "")  {
-
-      //   const filePath = path.resolve("public", option.mediaPath);
-
-
-      //   const optionsMsg = await getMessageOptions(option.mediaName, filePath);
-
-      //   let sentMessage = await wbot.sendMessage(`${ticket.contact.number}@${ticket.isGroup ? "g.us" : "s.whatsapp.net"}`, { ...optionsMsg });
-
-      //   await verifyMediaMessage(sentMessage, ticket, ticket.contact);
-      // }
     }
-
-    // não linha a primeira pergunta
   } else if (!isNil(queue) && isNil(ticket.queueOptionId) && !dontReadTheFirstQuestion) {
     const option = queue?.options.find((o) => o.option == messageBody);
     if (option) {
@@ -1148,7 +1102,6 @@ const handleChartbot = async (ticket: Ticket, msg: WAMessage, wbot: Session, don
   await ticket.reload();
 
   if (!isNil(queue) && isNil(ticket.queueOptionId)) {
-
     const queueOptions = await QueueOption.findAll({
       where: { queueId: ticket.queueId, parentId: null },
       order: [
@@ -1491,8 +1444,6 @@ const handleMessage = async (
 
     await provider(ticket, msg, companyId, contact, wbot as WASocket);
 
-    // voltar para o menu inicial
-
     if (bodyMessage.toUpperCase() === "PARAR") {
       console.log("Usuário solicitou parar. Interrompendo processamento.");
       await ticket.update({
@@ -1505,6 +1456,7 @@ const handleMessage = async (
       return;
     }
 
+    // voltar para o menu inicial
     if (bodyMessage == "00") {
       await ticket.update({
         queueOptionId: null,
@@ -1529,7 +1481,6 @@ const handleMessage = async (
          * Tratamento para avaliação do atendente
          */
 
-         // dev Ricardo: insistir a responder avaliação
          const rate_ = Number(bodyMessage);
 
          if ((ticket?.lastMessage.includes('_Insatisfeito_') || ticket?.lastMessage.includes('Por favor avalie nosso atendimento.')) &&  (!isFinite(rate_))) {
@@ -1549,8 +1500,6 @@ const handleMessage = async (
              debouncedSentMessage();
              return;
          }
-         // dev Ricardo
-
         if (ticketTraking !== null && verifyRating(ticketTraking)) {
           handleRating(msg, ticket, ticketTraking);
           return;
@@ -1560,8 +1509,6 @@ const handleMessage = async (
       Sentry.captureException(e);
       console.log(e);
     }
-
-
     if (hasMedia) {
       await verifyMediaMessage(msg, ticket, contact);
     } else {
@@ -1751,8 +1698,6 @@ const handleMessage = async (
       console.log(e);
     }
 
-
-
     if (!whatsapp?.queues?.length && !ticket.userId && !isGroup && !msg.key.fromMe) {
 
       const lastMessage = await Message.findOne({
@@ -1787,7 +1732,6 @@ const handleMessage = async (
       }
 
     }
-
 
     if (whatsapp.queues.length == 1 && ticket.queue) {
       if (ticket.chatbot && !msg.key.fromMe) {
@@ -1936,10 +1880,7 @@ const wbotMessageListener = async (wbot: Session, companyId: number): Promise<vo
         const messageExists = await Message.count({
           where: { id: message.key.id!, companyId }
         });
-
-
         if (!messageExists) {
-
           await handleMessage(message, wbot, companyId);
           await verifyRecentCampaign(message, companyId);
           await verifyCampaignMessageAndCloseTicket(message, companyId);
@@ -1956,10 +1897,6 @@ const wbotMessageListener = async (wbot: Session, companyId: number): Promise<vo
         handleMsgAck(message, message.update.status);
       });
     });
-
-    //wbot.ev.on("messages.set", async (messageSet: IMessage) => {
-    //  messageSet.messages.filter(filterMessages).map(msg => msg);
-    //});
   } catch (error) {
     Sentry.captureException(error);
     logger.error(`Error handling wbot message listener. Err: ${error}`);

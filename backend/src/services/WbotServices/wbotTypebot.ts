@@ -78,7 +78,6 @@ const startChat = async (msgBody, ticket, typebot) => {
       startChatTime: new Date()
     }) 
   }
- 
   return requestData
 }
 
@@ -87,7 +86,6 @@ const continueChat = async (msgBody, ticket) => {
 }
   
 const SendMessageReturnTypebot = async (requestData, ticket,resetChatbotMsg) => {
-
   const messages = requestData.messages
   for (const message of messages){
       if (message.type === 'text') {
@@ -127,7 +125,7 @@ const SendMessageReturnTypebot = async (requestData, ticket,resetChatbotMsg) => 
               ticket,
               body: media.filename
             })
-           
+
           }catch(e){}
       }
   }
@@ -145,7 +143,6 @@ const SendMessageReturnTypebot = async (requestData, ticket,resetChatbotMsg) => 
         ticket,
         quotedMsg: null
        })
-      //await timer(rndInt * 1000)
     }
   }
   if (resetChatbotMsg) {
@@ -158,27 +155,16 @@ const SendMessageReturnTypebot = async (requestData, ticket,resetChatbotMsg) => 
 }
 
 const handleTypebot = async (ticket: Ticket, msg: WAMessage, queue: Queue) => {
-  
   let possuiSession: Boolean = true;
-
-  const typebot = queue.publicId
-  //const typebot = "pesquisa-de-satisfa";
-  
-  const timer = ms => new Promise(res => setTimeout(res, ms))
- 
-  const contentMsgboby = await getBodyMessage(msg)
-  
-  const rndInt = randomIntFromInterval(1, 3)
-  
-  await timer(rndInt * 1000)
-
-  // await ticket.reload()
-  
-  possuiSession = !isNil(ticket.sessiontypebot)
+  const typebot = queue.publicId;
+  const timer = ms => new Promise(res => setTimeout(res, ms));
+  const contentMsgboby = await getBodyMessage(msg);
+  const rndInt = randomIntFromInterval(1, 3);
+  await timer(rndInt * 1000);
+  possuiSession = !isNil(ticket.sessiontypebot);
 
   if (contentMsgboby == "00") {
     possuiSession = false;
-
     await ticket.update({ 
       sessiontypebot: null,
       startChatTime: null 
@@ -188,7 +174,7 @@ const handleTypebot = async (ticket: Ticket, msg: WAMessage, queue: Queue) => {
   const requestTypeBot = possuiSession 
                           ? await continueChat(contentMsgboby, ticket) 
                           : await startChat(contentMsgboby,  ticket, typebot);
-  //console.log("SRequest ", requestTypeBot)         
+      
   if (requestTypeBot) {
     delay(2000, await SendMessageReturnTypebot(requestTypeBot, ticket, queue.resetChatbotMsg))
   }

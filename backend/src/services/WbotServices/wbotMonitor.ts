@@ -6,7 +6,6 @@ import {
 import * as Sentry from "@sentry/node";
 
 import { Op } from "sequelize";
-// import { getIO } from "../../libs/socket";
 import { Store } from "../../libs/store";
 import Contact from "../../models/Contact";
 import Setting from "../../models/Setting";
@@ -36,7 +35,6 @@ const wbotMonitor = async (
 
       if (content.tag === "offer") {
         const { from, id } = node.attrs;
-        //console.log(`${from} is calling you with id ${id}`);
       }
 
       if (content.tag === "terminate") {
@@ -45,11 +43,6 @@ const wbotMonitor = async (
         });
 
         if (sendMsgCall.value === "disabled") {
-          // await wbot.sendMessage(node.attrs.from, {
-          //   text:
-          //     "*Mensagem Automática:*\n\nAs chamadas de voz e vídeo estão desabilitas para esse WhatsApp, favor enviar uma mensagem de texto. Obrigado",
-          // });
-
           const number = node.attrs.from.replace(/\D/g, "");
 
           const contact = await Contact.findOne({
@@ -60,11 +53,9 @@ const wbotMonitor = async (
             where: {
               contactId: contact.id,
               whatsappId: wbot.id,
-              //status: { [Op.or]: ["close"] },
               companyId
             },
           });
-          // se não existir o ticket não faz nada.
           if (!ticket) return;
 
           const date = new Date();
@@ -88,13 +79,11 @@ const wbotMonitor = async (
             lastMessage: body,
           });
 
-
           if(ticket.status === "closed") {
             await ticket.update({
               status: "pending",
             });
           }
-
           return CreateMessageService({ messageData, companyId: companyId });
         }
       }
@@ -107,10 +96,6 @@ const wbotMonitor = async (
         contacts,
       });
     });
-
-    //wbot.ev.on("contacts.set", async (contacts: IContact) => {
-    //  console.log("set", contacts);
-    //});
   } catch (err) {
     Sentry.captureException(err);
     logger.error(err);

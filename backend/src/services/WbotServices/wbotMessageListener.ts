@@ -75,6 +75,8 @@ interface IMessage {
 
 export const isNumeric = (value: string) => /^-?\d+$/.test(value);
 
+export let BotStop = false;
+
 const writeFileAsync = promisify(writeFile);
 
 const getTypeMessage = (msg: proto.IWebMessageInfo): string => {
@@ -731,6 +733,11 @@ const verifyQueue = async (
     ticket.companyId
   )
 
+  if (BotStop) {
+    console.log("Lucas DEV -> BotStop verifyQueue LN736");
+    return;
+  }
+
   if (queues.length === 1) {
     const firstQueue = head(queues);
     // ====== Typebot ==========================
@@ -880,6 +887,11 @@ const verifyQueue = async (
       const queue = await Queue.findByPk(choosenQueue.id);
 
       let currentSchedule;
+
+      if(BotStop) {
+        console.log("Lucas DEV -> L892");
+        return;
+      }
 
       const settings = await Setting.findOne({
         where: {
@@ -1444,14 +1456,15 @@ const handleMessage = async (
 
     await provider(ticket, msg, companyId, contact, wbot as WASocket);
 
-    if (bodyMessage.toUpperCase() === "PARAR") {
+    // parar o bot
+    console.log("Lucas DEV -> instrucao parar bot iniciando...L1468");
+    if (bodyMessage === "PARAR") {
+      BotStop = true;
       console.log("Usuário solicitou parar. Interrompendo processamento.");
       await ticket.update({
         queueOptionId: null,
         chatbot: false,
-        queueId: null,
-        sessiontypebot: null,
-        startChatTime: null
+        queueId: null, // aqui deve atribuir outra fila para o usuario.
       });
       return;
     }
@@ -1632,7 +1645,12 @@ const handleMessage = async (
       !ticket.userId &&
       whatsapp.queues.length >= 1
     ) {
-      await verifyQueue(wbot, msg, ticket, ticket.contact);
+      if(BotStop) {
+        console.log("Lucas DEV -> L1658");
+        return;
+      } else {
+        await verifyQueue(wbot, msg, ticket, ticket.contact);
+      }
 
     }
 

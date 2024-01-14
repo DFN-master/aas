@@ -2,8 +2,7 @@ import { QueryInterface } from "sequelize";
 
 module.exports = {
   up: async (queryInterface: QueryInterface) => {
-    await queryInterface.addConstraint("Contacts", {
-      fields: ["number","companyId"],
+    await queryInterface.addConstraint("Contacts", ['number','companyId'], {
       type: 'unique',
       name: 'number_companyid_unique',
     });

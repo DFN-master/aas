@@ -734,7 +734,7 @@ const verifyQueue = async (
   )
 
   if (BotStop) {
-    console.log("Lucas DEV -> BotStop verifyQueue LN736");
+    console.log("Lucas DEV -> verifyQueue LN736");
     return;
   }
 
